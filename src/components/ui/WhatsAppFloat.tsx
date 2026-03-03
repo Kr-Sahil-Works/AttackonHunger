@@ -14,7 +14,7 @@ export default function WhatsAppFloat() {
   }, [scrollY])
 
   // ✅ 👉 ADD YOUR WHATSAPP NUMBER BELOW (with country code, no + or spaces)
-  const phoneNumber = "9608540597"
+  const phoneNumber = "8670764082"
 
   const handleClick = () => {
     window.open(`https://wa.me/${phoneNumber}`, "_blank")
