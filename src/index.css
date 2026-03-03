@@ -1,0 +1,152 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ===================================================== */
+/* THEME TOKENS */
+/* ===================================================== */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+/* ===================================================== */
+/* ROOT */
+/* ===================================================== */
+
+:root {
+  --radius: 0.625rem;
+}
+
+/* ===================================================== */
+/* DARK MODE */
+/* ===================================================== */
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+}
+
+/* ===================================================== */
+/* BASE LAYER */
+/* ===================================================== */
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    backface-visibility: hidden;
+  }
+
+  /* 🚀 GLOBAL CINEMATIC CANVAS */
+  body {
+    background:
+      radial-gradient(1200px 600px at 15% -10%, #8f0f1a33, transparent 60%),
+      radial-gradient(1000px 500px at 85% 120%, #ff3b3b22, transparent 60%),
+      #070707;
+
+    color: white;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    overscroll-behavior-y: none;
+  }
+
+  /* paper helper (kept) */
+  .section-paper {
+    position: relative;
+  }
+
+  .section-paper::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle at 50% 0%,
+      rgba(0, 0, 0, 0.04),
+      transparent 60%
+    );
+    pointer-events: none;
+  }
+}
+
+/* ===================================================== */
+/* SMOOTH SCROLL */
+/* ===================================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===================================================== */
+/* NAVBAR OFFSET FIX */
+/* ===================================================== */
+
+section {
+  position: relative;
+  isolation: isolate;
+  scroll-margin-top: 120px;
+}
+
+/* ===================================================== */
+/* 🎬 CINEMATIC SECTION CROSSFADE */
+/* ===================================================== */
+
+/* top fade */
+section::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -70px;
+  height: 110px;
+  pointer-events: none;
+  z-index: 4;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.38),
+    rgba(0, 0, 0, 0.16),
+    transparent
+  );
+
+  opacity: 0.35;
+}
+
+/* bottom fade */
+section::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 60px;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0,0,0,0.12)
+  );
+  opacity: 0.15;
+}
+
+/* ===================================================== */
+/* ULTRA PREMIUM POLISH */
+/* ===================================================== */
+
+::selection {
+  background: rgba(239, 68, 68, 0.35);
+  color: white;
+}
